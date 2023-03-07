@@ -6,7 +6,7 @@
 
 **= compiles to plain Javascript**
 
-## Type
+# Type
 
 Static Types
 
@@ -406,7 +406,7 @@ function logMessage(message: string): void {
 
 `console.log` 함수를 호출하여 메시지를 출력
 
-## Interface
+# Interface
 
 ```tsx
 interface Person1 {
