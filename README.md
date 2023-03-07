@@ -32,7 +32,7 @@ function add(n1: number, n2: number) {
 const result = add(39, 28); 
 ```
 
-### boolean
+**boolean**
 
 `boolean`은 논리값을 나타내는 자료형으로, `true`와 `false` 중 하나의 값을 가짐
 
@@ -56,7 +56,7 @@ let isNotOk: boolean = new Boolean(true);
 
 사용하는 것이 권장됨.
 
-### number
+**number**
 
 `number`은 TypeScript에서 숫자 값을 나타내는 기본 자료형
 
@@ -79,7 +79,7 @@ let underscoreNum: number = 1_000_000
 
 `underscoreNum` 변수는 백만을 나타내는 숫자 1000000을 할당
 
-### string
+**string**
 
 `string`은 텍스트를 나타내기 위한 TypeScript의 기본 데이터 타입
 
@@ -92,7 +92,7 @@ let sentence: string = `hello, my name is ${name}`;
 
 위 코드에서 변수 `name`은 문자열 값인 `'John Doe'`가 할당되고, 변수 `message`는 문자열 값인 `"Hello, world!"`가 할당
 
-### symbol
+**symbol**
 
 `symbol`은 TypeScript에서 고유 식별자를 나타내는 원시 데이터 타입
 
@@ -109,7 +109,7 @@ console.log(id1 === id2); // false
 
 하지만 서로 다른 설명으로 생성되었기 때문에 서로 같지 않음
 
-### null & undefined
+**null & undefined**
 
 `null`과 `undefined`는 TypeScript에서 모든 타입의 서브타입
 
@@ -128,7 +128,7 @@ let age: number = undefined;
 
 위 코드에서 변수 `name`은 `null` 값을 할당하고, 변수 `age`는 `undefined` 값을 할당
 
-### object
+**object**
 
 `object`는 TypeScript에서 객체를 나타내는 데이터 타입
 
@@ -143,7 +143,7 @@ let user: { name: string, age: number } = {
 
 위 코드에서 `user` 변수는 객체 타입으로 선언되었으며, `name`과 `age` 속성을 가지고 있음
 
-### 배열(Array)
+**배열(Array)**
 
 `array`는 요소(element)들의 모임을 나타내기 위한 데이터 타입
 
@@ -163,7 +163,7 @@ let numbers: Array<number> = [1, 2, 3, 4, 5];
 
 위 코드에서 `numbers` 변수는 숫자(number) 요소를 가진 배열(array)
 
-### tuple
+**tuple**
 
 `tuple`은 TypeScript에서 고정된 요소 수를 가진 배열을 표현하는 데 사용
 
@@ -187,7 +187,7 @@ const [first, second] = person1
 
 `first`와 `second` 변수는 각각 `person1` 튜플의 첫 번째 요소와 두 번째 요소를 할당
 
-### any
+**any**
 
 `any`는 TypeScript에서 모든 타입을 나타내는 특수한 데이터 타입
 
@@ -246,7 +246,7 @@ if (typeof maybe === "string") {
 const aNumber: number = maybe;
 
 if (maybe === true) {
-    const aBoolean: boolean = maybe;
+    const aBoolean: boolean = maybe; \
 
     // const aString: string = maybe;
 }
