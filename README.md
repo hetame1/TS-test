@@ -32,7 +32,7 @@ function add(n1: number, n2: number) {
 const result = add(39, 28); 
 ```
 
-**boolean**
+### boolean
 
 `boolean`은 논리값을 나타내는 자료형으로, `true`와 `false` 중 하나의 값을 가짐
 
@@ -56,7 +56,7 @@ let isNotOk: boolean = new Boolean(true);
 
 사용하는 것이 권장됨.
 
-**number**
+### number
 
 `number`은 TypeScript에서 숫자 값을 나타내는 기본 자료형
 
@@ -79,7 +79,7 @@ let underscoreNum: number = 1_000_000
 
 `underscoreNum` 변수는 백만을 나타내는 숫자 1000000을 할당
 
-**string**
+### string
 
 `string`은 텍스트를 나타내기 위한 TypeScript의 기본 데이터 타입
 
@@ -92,7 +92,7 @@ let sentence: string = `hello, my name is ${name}`;
 
 위 코드에서 변수 `name`은 문자열 값인 `'John Doe'`가 할당되고, 변수 `message`는 문자열 값인 `"Hello, world!"`가 할당
 
-**symbol**
+### symbol
 
 `symbol`은 TypeScript에서 고유 식별자를 나타내는 원시 데이터 타입
 
@@ -109,7 +109,7 @@ console.log(id1 === id2); // false
 
 하지만 서로 다른 설명으로 생성되었기 때문에 서로 같지 않음
 
-**null & undefined**
+### null & undefined
 
 `null`과 `undefined`는 TypeScript에서 모든 타입의 서브타입
 
@@ -128,7 +128,7 @@ let age: number = undefined;
 
 위 코드에서 변수 `name`은 `null` 값을 할당하고, 변수 `age`는 `undefined` 값을 할당
 
-**object**
+### object
 
 `object`는 TypeScript에서 객체를 나타내는 데이터 타입
 
@@ -143,7 +143,7 @@ let user: { name: string, age: number } = {
 
 위 코드에서 `user` 변수는 객체 타입으로 선언되었으며, `name`과 `age` 속성을 가지고 있음
 
-**배열(Array)**
+### 배열(Array)
 
 `array`는 요소(element)들의 모임을 나타내기 위한 데이터 타입
 
@@ -163,7 +163,7 @@ let numbers: Array<number> = [1, 2, 3, 4, 5];
 
 위 코드에서 `numbers` 변수는 숫자(number) 요소를 가진 배열(array)
 
-**tuple**
+### tuple
 
 `tuple`은 TypeScript에서 고정된 요소 수를 가진 배열을 표현하는 데 사용
 
@@ -187,7 +187,7 @@ const [first, second] = person1
 
 `first`와 `second` 변수는 각각 `person1` 튜플의 첫 번째 요소와 두 번째 요소를 할당
 
-**any**
+### any
 
 `any`는 TypeScript에서 모든 타입을 나타내는 특수한 데이터 타입
 
@@ -246,7 +246,7 @@ if (typeof maybe === "string") {
 const aNumber: number = maybe;
 
 if (maybe === true) {
-    const aBoolean: boolean = maybe; \
+    const aBoolean: boolean = maybe;
 
     // const aString: string = maybe;
 }
@@ -268,7 +268,7 @@ if (typeof maybe === "string") {
 }발생
 ```
 
-**unknown**
+### unknown
 
 `unknown`은 TypeScript 3.0에서 새로 추가된 데이터 타입으로, `any`와 유사하지만 약간 다름
 
@@ -334,7 +334,7 @@ if(typeof b != "string") {
 }
 ```
 
-**never**
+### never
 
 `never`는 TypeScript에서 절대 발생하지 않는 값을 나타내는 데이터 타입
 
@@ -388,7 +388,7 @@ if(typeof b != "string") {
 
 `string`이 아닌 경우 `never` 타입을 반환
 
-**void**
+### void
 
 `void`는 TypeScript에서 함수의 반환 타입으로 사용
 
@@ -405,6 +405,133 @@ function logMessage(message: string): void {
 위 코드에서 `logMessage` 함수는 `void` 타입을 반환하며,
 
 `console.log` 함수를 호출하여 메시지를 출력
+
+# System, Compiler
+
+### 타입 호환성(Type Compatibility)
+
+타입 호환성은 TypeScript 코드에서 타입 간의 호환 가능성을 말함
+
+이는 TypeScript의 핵심 컨셉 중 하나이며, 코드의 유연성과 타입 안정성 간의 균형을 유지하는 데 중
+
+요한 역할을 함
+
+타입 호환성은 구조적 서브타이핑을 기반으로 함
+
+구조적 서브타이핑은 타입 간의 구조가 서로 호환 가능한지 여부를 결정 
+
+또한 TypeScript는 `extends` 키워드를 사용하여 타입 간의 상속 관계를 표현할 수 있음
+
+타입 호환성에 대한 자세한 내용은 TypeScript 핸드북을 참조
+
+http://json.schemastore.org/tsconfig
+
+### 최상위 프로퍼티
+
+- **compileOnSave**
+- **extends**
+- **compileOptions**
+- **files**
+- **include**
+- **exclude**
+- **references**
+
+### files, include, exclude
+
+- files
+    - 상대 혹은 절대 경로의 리스트 배열입니다
+    - exclude 보다 쎕니다
+- include, exclude
+    - glob 패턴 (마치. gitignore)
+    - include
+        - exclude 보다 약합니다
+        - *같은걸 사용하면 .ts / .tsx / .d.ts만 include(allowJS)
+    - exclude
+        - 설정 안하면 4가지(node_modules, bower_components, jspm_packages, <outDir>를
+            
+            default로 제외합니다.
+            
+        - <outDir>은 항상 제외합니다.(include에 있어도)
+    
+
+### typeRoots, types
+
+`typeRoots`는 TypeScript 컴파일러가 타입 선언 파일을 찾는 위치를 지정하는 옵션
+
+이 옵션을 사용하면 `node_modules/@types` 외에 다른 디렉토리에서도 타입 선언 파일을 
+
+찾을 수 있음
+
+`types` 설정은 `typeRoots` 설정으로부터 찾아내는 타입 선언 파일 중에서 
+
+선택적으로 사용할 수 있는 파일을 명시하는 옵션
+
+이 옵션을 사용하면 `typeRoots` 설정에 명시된 위치에서 타입 선언 파일 전체를 
+
+사용하는 것이 아니라, 필요한 타입 선언 파일만 선택하여 사용할 수 있음
+
+이를 통해 컴파일 시간을 단축 가능
+
+**typeRoots와 types는 같이 사용하지 않음**
+
+### target 과 lib
+
+TypeScript에서 `target` 옵션은 컴파일된 JavaScript 코드가 어떤 버전의 ECMAScript 
+
+명세를 따르는지를 설정
+
+예를 들어, `target`을 ES5로 설정하면 TypeScript 컴파일러는 ES5 명세에 따라 호환되는 
+
+자바스크립트 코드를 생성
+
+`lib` 옵션은 TypeScript 컴파일러가 가져올 라이브러리를 지정
+
+이 값은 `target` 옵션에 따라 자동으로 설정됩니다.
+
+예를 들어, `target` 옵션을 ES5로 설정하고 `lib` 옵션을 ES6로 설정하면, TypeScript 컴파일러는
+
+ES5 명세에 따라 호환되는 자바스크립트 코드를 생성하면서 ES6 라이브러리를 가져올 수 있습니다.
+
+### outDir, outFile, rootDir
+
+### outDir
+
+`outDir`은 컴파일된 파일의 출력 디렉토리를 설정하는 옵션
+
+ TypeScript 컴파일러는 여러 개의 TypeScript 소스 파일을 컴파일한 후, 
+
+`outDir` 옵션에 지정된 디렉토리에 컴파일된 JavaScript 파일들을 저장
+
+### outFile
+
+`outFile`은 컴파일된 파일의 출력 파일 이름을 설정하는 옵션
+
+TypeScript 컴파일러는 여러 개의 TypeScript 소스 파일을 컴파일한 후, 
+
+`outFile` 옵션에 지정된 파일 이름으로 컴파일된 JavaScript 파일을 하나로 합쳐서 저장
+
+### rootDir
+
+`rootDir`은 TypeScript 소스 파일의 루트 디렉토리를 설정하는 옵션
+
+TypeScript 컴파일러는 `rootDir` 옵션에 지정된 디렉토리를 기준으로 
+
+상대 경로로 소스 파일을 찾음
+
+따라서 `rootDir` 옵션을 사용하면 TypeScript 소스 파일의 상대 경로를 짧게 유지할 수 있음
+
+### strict
+
+TypeScript에서 `strict` 옵션은 다양한 타입 체킹 옵션을 활성화
+
+ 이 옵션을 사용하면 코드의 안정성과 가독성을 높일 수 있음
+
+- `noImplicitAny`: 암시적 any 타입을 금지
+- `strictNullChecks`: null과 undefined의 사용을 제한
+- `strictFunctionTypes`: 함수 타입의 호환성을 검사
+- `strictBindCallApply`: bind, call, apply 함수의 인자의 타입을 검사
+- `strictPropertyInitialization`: 클래스의 멤버 변수의 초기화를 강제
+- `alwaysStrict`: strict 모드를 항상 활성화
 
 # Interface
 
@@ -437,6 +564,8 @@ TypeScript에서 인터페이스 (interface)는 다른 타입들을 추상화하
 `Person1` 인터페이스를 사용하여 `hello1` 함수를 정의하고 `p1` 객체를 생성하여 
 
 `hello1` 함수에 전달하고 있다
+
+### Optional property
 
 ```tsx
 interface Person2 {
@@ -504,6 +633,8 @@ hello3(p31)
 
 같은 복잡한 객체도 정의 가능
 
+### Function in interface
+
 ```tsx
 interface Person4 {
     name: string;
@@ -553,6 +684,8 @@ p42.hello();
 
 발생함
 
+### class implements interface
+
 ```tsx
 interface IPerson1 {
     name: string;
@@ -589,6 +722,8 @@ person.hello();
 
 `person` 변수의 `hello()` 메서드를 호출하면 `Person` 클래스에서 구현한 메서드가 실행
 
+### interface extends interface
+
 ```tsx
 interface IPerson2 {
     name: string;
@@ -613,6 +748,8 @@ const k: IKorean = {
 
 `k` 객체는 `IKorean` 인터페이스를 따르는 객체로, `name`, `age`, `city` 프로퍼티를 가지고 있음
 
+### function interface
+
 ```tsx
 interface HelloPerson {
     (name: string, age?: number): void
@@ -634,6 +771,8 @@ helloPerson('Mark', 39);
 는 필수로 선언되어 있고, `age` 매개변수는 선택적으로 선언되어 있음
 
 `helloPerson('Mark')`와 같이 `age` 매개변수 값을 생략해도 오류가 발생하지 않음
+
+### Readonly interface Properties
 
 ```tsx
 interface Person8 {
@@ -657,6 +796,8 @@ p81.gender = "female";`gender` 프로퍼티
 하지만 `gender` 프로퍼티는 `readonly`로 선언되어 있기 때문에, 값을 변경하려고 하면 컴파일 오류
 
 가 발생
+
+### type alias vs interface
 
 ```tsx
 // type alias
@@ -704,133 +845,3 @@ TypeScript에서 `type alias`와 `interface`는 유사한 역할을 하지만 �
 따라서, `type alias`는 복잡한 타입 선언에 유용하고, `interface`는 객체나 클래스의 구조를 명확하
 
 게 하기 위해서 사용됨
-
-# Class
-
-**object 를 만드는 blueprint (청사진, 설계도)**
-
-**OOP 를 위한 초석**
-
-```tsx
-class Person {
-    name: string;
-    
-    constructor(name: string) {
-        this.name = name;
-    }
-}
-
-const p1 = new Person("Mark");
-
-console.log(p1);
-```
-
-`Person` 클래스를 정의하며, 이 클래스는 `name` 속성과 이름을 설정하는 생성자를 갖고 있음
-
-클래스는 객체를 만드는 청사진 또는 설계도로, 객체 지향 프로그래밍에서 매우 중요한 개념
-
-클래스를 사용하면 코드를 더욱 구조화하고 유지보수가 용이해짐
-
-- 생성자 함수가 없으면, 디폴트 생성자가 불린다
-- 프로그래머가 만든 생성자가 하나라도 있으면, 디폴트 생성자는 사라진다
-- strict 모드에서는 프로퍼티를 선언하는 곳 또는 생성자에서 값을 할당해야 한다
-- 프로퍼티를 선언하는 곳 또는 생성자에서 값을 할당하지 않는 경우에는 ! 를 붙여서
-    
-    위험을 표현한다
-    
-- 클래스의 프로퍼티가 정의되어 있지만, 값을 대입하지 않으면 undefined 이다
-- 생성자에는 async를 설정할 수 없다
-
-```
-class Person {
-  name: string = "Mark";
-   age!: number;
-
-  constructor(age?: number) {
-    if (age === undefined) {
-      this.age = 20;
-    } else {
-      this.age = age;
-    }
-  }
-  async init() { }
-
-} 
-
-const p1 = new Person(39);
-
-// p1.age = 30;
-console.log(p1);
-```
-
-`Person` 클래스의 `init` 메서드는 객체를 추가 데이터로 초기화하거나 필요한 모든 설정을 
-
-수행하는 데 사용할 수 있음
-
-그러나 이 메서드는 `async` 메서드가 될 수 없으므로, 비동기 작업이 필요한 경우 메서드 외부에서 
-
-처리해야 함
-
-또한, 클래스 프로퍼티가 선언되거나 생성자에서 값이 할당되지 않으면, 프로퍼티는 `undefined`로 
-
-초기화 
-
-- 접근 제어자에서 public, private, protected 가 있다
-- 설정하지 않으면 public 이다
-- 클래스 내부의 모든 곳에(생성자, 프로퍼티, 메서드) 설정 가능하다
-- private 으로 설정하면 클래스 외부에서 접근할 수 없다
-
-```tsx
-class Person {
-
-  public constructor(public name: string, private _age?: number) {
-    
-  }
-} 
-
-const p1 = new Person("Makr", 39);
-
-console.log(p1.name);
-```
-
-Js에서 `private` 을 지원하지 않아 오랫동안 프로퍼티나 메서드 이름 앞에 _를 붙여 표현 했음
-
-이 클래스에는 사람의 `이름`과 `나이`를 설정하는 생성자가 있음 `이름` 속성은 공개(public)되어 
-
-있으며, `나이` 속성은 비공개(private)
-
-```tsx
-class Person {
-
-  public constructor(public _name: string, private age: number) {}
-
-  get name() {
-    //
-    console.log("get")
-    return this._name;
-  }
-
-  set name(n: string) {
-    console.log("set")
-    this._name = n;
-  }
-
-} 
-
-const p1 = new Person("Makr", 39);
-
-console.log(p1.name); // get 을 하는 함수를 getter
-p1.name = "Jihoon"; // set 을 하는 함수를 setter
-```
-
-`"name"`이라는 `getter` 함수와 `"_name"` 매개변수를 설정하는 `setter` 함수가 있음
-
-클래스 내부에 `get` 키워드와 함께 getter 함수를 작성하면, 해당 프로퍼티를 호출할 때마다 getter 
-
-함수를 실행 getter 함수는 `return` 키워드를 통해 값을 반환하며, 클래스 외부에서는 일반 프로퍼티
-
-처럼 접근할 수 있음
-
-`set` 키워드와 함께 setter 함수를 작성하면, 해당 프로퍼티에 값을 할당할 때마다 setter 함수가 실행
-
-setter 함수는 파라미터를 받아들이며, 이를 통해 값을 설정
