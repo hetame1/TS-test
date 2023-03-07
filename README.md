@@ -704,3 +704,133 @@ TypeScript에서 `type alias`와 `interface`는 유사한 역할을 하지만 �
 따라서, `type alias`는 복잡한 타입 선언에 유용하고, `interface`는 객체나 클래스의 구조를 명확하
 
 게 하기 위해서 사용됨
+
+# Class
+
+**object 를 만드는 blueprint (청사진, 설계도)**
+
+**OOP 를 위한 초석**
+
+```tsx
+class Person {
+    name: string;
+    
+    constructor(name: string) {
+        this.name = name;
+    }
+}
+
+const p1 = new Person("Mark");
+
+console.log(p1);
+```
+
+`Person` 클래스를 정의하며, 이 클래스는 `name` 속성과 이름을 설정하는 생성자를 갖고 있음
+
+클래스는 객체를 만드는 청사진 또는 설계도로, 객체 지향 프로그래밍에서 매우 중요한 개념
+
+클래스를 사용하면 코드를 더욱 구조화하고 유지보수가 용이해짐
+
+- 생성자 함수가 없으면, 디폴트 생성자가 불린다
+- 프로그래머가 만든 생성자가 하나라도 있으면, 디폴트 생성자는 사라진다
+- strict 모드에서는 프로퍼티를 선언하는 곳 또는 생성자에서 값을 할당해야 한다
+- 프로퍼티를 선언하는 곳 또는 생성자에서 값을 할당하지 않는 경우에는 ! 를 붙여서
+    
+    위험을 표현한다
+    
+- 클래스의 프로퍼티가 정의되어 있지만, 값을 대입하지 않으면 undefined 이다
+- 생성자에는 async를 설정할 수 없다
+
+```
+class Person {
+  name: string = "Mark";
+   age!: number;
+
+  constructor(age?: number) {
+    if (age === undefined) {
+      this.age = 20;
+    } else {
+      this.age = age;
+    }
+  }
+  async init() { }
+
+} 
+
+const p1 = new Person(39);
+
+// p1.age = 30;
+console.log(p1);
+```
+
+`Person` 클래스의 `init` 메서드는 객체를 추가 데이터로 초기화하거나 필요한 모든 설정을 
+
+수행하는 데 사용할 수 있음
+
+그러나 이 메서드는 `async` 메서드가 될 수 없으므로, 비동기 작업이 필요한 경우 메서드 외부에서 
+
+처리해야 함
+
+또한, 클래스 프로퍼티가 선언되거나 생성자에서 값이 할당되지 않으면, 프로퍼티는 `undefined`로 
+
+초기화 
+
+- 접근 제어자에서 public, private, protected 가 있다
+- 설정하지 않으면 public 이다
+- 클래스 내부의 모든 곳에(생성자, 프로퍼티, 메서드) 설정 가능하다
+- private 으로 설정하면 클래스 외부에서 접근할 수 없다
+
+```tsx
+class Person {
+
+  public constructor(public name: string, private _age?: number) {
+    
+  }
+} 
+
+const p1 = new Person("Makr", 39);
+
+console.log(p1.name);
+```
+
+Js에서 `private` 을 지원하지 않아 오랫동안 프로퍼티나 메서드 이름 앞에 _를 붙여 표현 했음
+
+이 클래스에는 사람의 `이름`과 `나이`를 설정하는 생성자가 있음 `이름` 속성은 공개(public)되어 
+
+있으며, `나이` 속성은 비공개(private)
+
+```tsx
+class Person {
+
+  public constructor(public _name: string, private age: number) {}
+
+  get name() {
+    //
+    console.log("get")
+    return this._name;
+  }
+
+  set name(n: string) {
+    console.log("set")
+    this._name = n;
+  }
+
+} 
+
+const p1 = new Person("Makr", 39);
+
+console.log(p1.name); // get 을 하는 함수를 getter
+p1.name = "Jihoon"; // set 을 하는 함수를 setter
+```
+
+`"name"`이라는 `getter` 함수와 `"_name"` 매개변수를 설정하는 `setter` 함수가 있음
+
+클래스 내부에 `get` 키워드와 함께 getter 함수를 작성하면, 해당 프로퍼티를 호출할 때마다 getter 
+
+함수를 실행 getter 함수는 `return` 키워드를 통해 값을 반환하며, 클래스 외부에서는 일반 프로퍼티
+
+처럼 접근할 수 있음
+
+`set` 키워드와 함께 setter 함수를 작성하면, 해당 프로퍼티에 값을 할당할 때마다 setter 함수가 실행
+
+setter 함수는 파라미터를 받아들이며, 이를 통해 값을 설정
