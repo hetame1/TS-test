@@ -268,7 +268,7 @@ if (typeof maybe === "string") {
 }발생
 ```
 
-### unknown
+**unknown**
 
 `unknown`은 TypeScript 3.0에서 새로 추가된 데이터 타입으로, `any`와 유사하지만 약간 다름
 
@@ -334,7 +334,7 @@ if(typeof b != "string") {
 }
 ```
 
-### never
+**never**
 
 `never`는 TypeScript에서 절대 발생하지 않는 값을 나타내는 데이터 타입
 
@@ -388,7 +388,7 @@ if(typeof b != "string") {
 
 `string`이 아닌 경우 `never` 타입을 반환
 
-### void
+**void**
 
 `void`는 TypeScript에서 함수의 반환 타입으로 사용
 
