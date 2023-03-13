@@ -30,5 +30,3 @@ class Child extends Parent {
 
 const c = new Child(1);
 
-c.print()
-
